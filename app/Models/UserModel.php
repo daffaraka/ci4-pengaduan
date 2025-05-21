@@ -16,8 +16,11 @@ class UserModel extends Model
         'id',
         'nik',
         'nama',
+        'email',
         'password',
         'role',
+        'alamat',
+        'telfon',
         'created_at',
         'updated_at',
     ];

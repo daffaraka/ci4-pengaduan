@@ -5,14 +5,11 @@ namespace Config;
 use CodeIgniter\Filters\Cors;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\Honeypot;
-use Myth\Auth\Filters\RoleFilter;
 use CodeIgniter\Filters\PageCache;
-use Myth\Auth\Filters\LoginFilter;
 use CodeIgniter\Filters\ForceHTTPS;
 use CodeIgniter\Filters\DebugToolbar;
 use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\SecureHeaders;
-use Myth\Auth\Filters\PermissionFilter;
 use CodeIgniter\Filters\PerformanceMetrics;
 use CodeIgniter\Config\Filters as BaseFilters;
 
@@ -37,9 +34,8 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
-        'login' => LoginFilter::class, // tambahkan ini
-        'role' => RoleFilter::class, // tambahkan ini
-        'permission' => PermissionFilter::class // tambahkan ini 
+        'auth' => \App\Filters\AuthGuard::class,
+
     ];
 
     /**
