@@ -15,7 +15,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="pages/pengaduan/pengaduan.php">
+        <a class="nav-link" href="dashboard/pengaduan">
           <i class="menu-icon mdi mdi-file-document"></i>
           <span class="menu-title">Pengaduan</span>
         </a>

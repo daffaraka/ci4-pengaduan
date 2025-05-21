@@ -10,7 +10,8 @@ class SessionController extends BaseController
     {
         $session = session();
         $authData = [
-            'name' => $data['name'],
+            'id' => $data['id'],
+            'nama' => $data['nama'],
             'email' => $data['email'],
             'isLoggedIn' => true
         ];

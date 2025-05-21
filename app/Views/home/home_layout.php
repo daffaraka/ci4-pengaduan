@@ -48,7 +48,6 @@
       </a>
 
       <?= $this->include('home/partials/navbar') ;?>
-      <a class="btn-getstarted" href="index.html#about">Get Started</a>
 
     </div>
   </header>

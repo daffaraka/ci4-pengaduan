@@ -29,11 +29,11 @@ class LoginController extends BaseController
                 $authSession->authorised($data);
                 return redirect()->route('/');
             } else {
-                $session->setFlashdata('msg', 'Password is incorrect.');
+                session()->setFlashdata('msg', 'Password is incorrect.');
                 return redirect()->back()->withInput();
             }
         } else {
-            $session->setFlashdata('msg', 'Email does not exist.');
+            session()->setFlashdata('msg', 'Email does not exist.');
             return redirect()->back()->withInput();
         }
     }
