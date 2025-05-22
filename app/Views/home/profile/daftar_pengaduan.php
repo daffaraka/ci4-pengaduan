@@ -5,7 +5,7 @@
     <div class="container pt-1 pb-5">
 
         <div class="d-flex justify-content-end">
-        <a href="/beranda/buat-pengaduan" class="btn btn-success my-3">Buat Pengaduan</a>
+            <a href="/beranda/buat-pengaduan" class="btn btn-success my-3">Buat Pengaduan</a>
 
         </div>
         <nav>
@@ -36,7 +36,11 @@
                             <?php foreach ($pengaduan as $item) : ?>
                                 <tr>
                                     <td><?= $no++ ?></td>
-                                    <td><?= esc($item['judul']) ?></td>
+                                    <td> <?php
+                                            $judul = explode(' ', $item['judul']);
+                                            $tigaKata = implode(' ', array_slice($judul, 0, 3));
+                                            echo esc($tigaKata . (count($judul) > 3 ? '...' : ''));
+                                            ?></td>
                                     <td><?= esc($item['kategori']) ?></td>
                                     <td><?= date('d-m-Y', strtotime($item['tanggal_kejadian'])) ?></td>
                                     <td><?= esc($item['lokasi_kejadian']) ?></td>

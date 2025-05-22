@@ -12,10 +12,9 @@ $routes->get('/', function () {
 
 
 // Create a route group for pengaduan CRUD operations
-$routes->group('dashboard', static function ($routes) {
+$routes->group('dashboard', ['filter' => 'auth'], static function ($routes) {
 
     $routes->view('/', 'dashboard/layout');
-
 
     $routes->view('index', 'dashboard/index');
 
@@ -28,7 +27,7 @@ $routes->group('dashboard', static function ($routes) {
         $routes->get('delete/(:num)', 'Admin\PengaduanController::delete/$1'); // Delete a specific pengaduan
 
     });
-     $routes->group('tanggapan', function ($routes) {
+    $routes->group('tanggapan', function ($routes) {
         $routes->get('/', 'PengaduanController::index'); // List all pengaduan
         $routes->get('create', 'PengaduanController::create'); // Show form to create a new pengaduan
         $routes->post('store', 'PengaduanController::store'); // Handle form submission for creating a new pengaduan

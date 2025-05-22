@@ -14,7 +14,7 @@ class PengaduanController extends BaseController
 
         $data = [
             'title' => 'Pengaduan',
-            'pengaduan' => $pengaduan->paginate(10),
+            'pengaduan' => $pengaduan->findAll(),
             'pager' => $pengaduan->pager
         ];
 
@@ -23,7 +23,7 @@ class PengaduanController extends BaseController
 
     public function delete($id)
     {
-        $model = new \App\Models\PengaduanModel();
+        $model = new PengaduanModel();
 
         $model->delete($id);
 
@@ -34,7 +34,7 @@ class PengaduanController extends BaseController
 
     public function update($id)
     {
-        $model = new \App\Models\PengaduanModel();
+        $model = new PengaduanModel();
 
         $pengaduan = $model->find($id);
 
@@ -54,7 +54,7 @@ class PengaduanController extends BaseController
 
     public function updateProcess($id)
     {
-        $model = new \App\Models\PengaduanModel();
+        $model = new PengaduanModel();
 
         $pengaduan = $model->find($id);
 

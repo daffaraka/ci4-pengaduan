@@ -17,8 +17,11 @@
   <link rel="stylesheet" href="<?= base_url('assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css') ?>">
   <!-- endinject -->
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="<?= base_url('assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css') ?>">
-  <link rel="stylesheet" type="text/css" href="<?= base_url('assets/js/select.dataTables.min.css') ?>">
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+
+     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
@@ -28,7 +31,7 @@
 
 <body class="with-welcome-text">
   <div class="container-scroller">
-    
+
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
@@ -185,14 +188,13 @@
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <div class="dropdown-header text-center">
                 <img class="img-md rounded-circle" src="assets/images/faces/face8.jpg" alt="Profile image">
-                <p class="mb-1 mt-3 fw-semibold">Allen Moreno</p>
+                <p class="mb-1 mt-3 fw-semibold"><?= session()->get('nama') ?> </p>
                 <p class="fw-light text-muted mb-0">allenmoreno@gmail.com</p>
               </div>
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i> Messages</a>
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i> Activity</a>
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i> FAQ</a>
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+         
+              <form action="<?= base_url('logout') ?>" method="post" class="d-inline">
+                <button type="submit" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</button>
+              </form>
             </div>
           </li>
         </ul>
@@ -211,7 +213,7 @@
 
           <div class="card">
             <div class="card-body">
-                       <?= $this->renderSection('content') ?>
+              <?= $this->renderSection('content') ?>
 
             </div>
           </div>
@@ -232,7 +234,8 @@
   </div>
   <!-- container-scroller -->
   <!-- plugins:js -->
-  <script src="<?= base_url('assets/vendors/js/vendor.bundle.base.js') ?>"></script>
+
+  <?= $this->renderSection('scripts') ;?>
   <script src="<?= base_url('assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') ?>"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
@@ -249,8 +252,11 @@
   <!-- Custom js for this page-->
   <script src="<?= base_url('assets/js/jquery.cookie.js') ?>" type="text/javascript"></script>
   <script src="<?= base_url('assets/js/dashboard.js') ?>"></script>
+  
   <!-- <script src="assets/js/Chart.roundedBarCharts.js"></script> -->
   <!-- End custom js for this page-->
+
+
 </body>
 
 </html>
