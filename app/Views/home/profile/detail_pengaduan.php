@@ -59,7 +59,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Tanggapan Admin</h4>
                     <p class="card-text"><?= esc($pengaduan['tanggapan']) ?></p>
-                    <img src="/uploads/tanggapan/<?= $pengaduan['foto_tanggapan'] ?>" class="img-fluid w-50 img-thumbnail shadow-sm" alt="...">
+                    <img src="/uploads/pengaduan/tanggapan/<?= $pengaduan['foto_tanggapan'] ?>" class="img-fluid w-25 img-thumbnail shadow-sm" alt="...">
                 </div>
             <?php else : ?>
                 <div class="card-body">
