@@ -65,60 +65,52 @@
             <hr>
             <div class="row my-4">
                 <div class="col-12 col-xl-6 col-lg-6">
-                    <h4>Riwayat Tanggapan</h4>
-                    <div class="row">
-                        <?php for ($i = 0; $i < 3; $i++) : ?>
-                            <div class="card mb-2 px-3 mb-2">
-                                <div class="card-body border">
-                                    <div class="d-flex justify-content-between">
-                                        <h6 class="card-title font-weight-bold text-dark">
-                                            <?= esc(date('d F Y, H:i:s', strtotime('-' . $i . ' days'))) ?>
-                                        </h6>
-                                        <?php if ($i == 0): ?>
-                                            <button class="btn btn-dark btn-sm ml-4 mt-0 py-0 mb-3">Tanggapan Terakhir</button>
-                                        <?php endif ?>
-                                    </div>
 
-                                    <div class="my-2">
-                                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, quia.</p>
-                                        <?php if ($i % 2 == 0): ?>
-                                            <button class="btn btn-dark disabled">Tidak ada lampiran</button>
-                                        <?php else: ?>
-                                            <a href="#" class="btn btn-sm btn-primary">Gambar Penanganan</a>
-                                        <?php endif ?>
-                                    </div>
-
-                                </div>
-                            </div>
-                        <?php endfor ?>
-                    </div>
+                    <?php if (isset($pengaduan['admin_id'], $pengaduan['tanggapan'], $pengaduan['foto_tanggapan'])) : ?>
+                        <div class="p-0">
+                            <h3 class="card-title">Tanggapan Admin</h4>
+                            <p class="card-text"><?= esc($pengaduan['tanggapan']) ?></p>
+                            <img src="/uploads/pengaduan/tanggapan/<?= $pengaduan['foto_tanggapan'] ?>" class="img-fluid w-50 img-thumbnail shadow-sm" alt="...">
+                        </div>
+                    <?php else : ?>
+                        <div class="p-0">
+                            <h3 class="card-title">Tanggapan Admin</h3>
+                            <p class="alert alert-danger">Belum ada tanggapan</p>
+                        </div>
+                    <?php endif ?>
                 </div>
                 <div class="col-12 col-xl-6 col-lg-6">
                     <h2>Beri Tanggapan</h2>
-                    <form action="/admin/pengaduan/tanggapan/<?= $pengaduan['id'] ?>" method="post">
-                        <?= csrf_field() ?>
-                        <div class="mb-3">
-                            <label for="tanggapan" class="form-label"><strong>Tanggapan</strong></label>
-                            <textarea class="form-control" id="tanggapan" name="tanggapan" rows="3" required></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="foto" class="form-label"><strong>Foto (Optional)</strong></label>
-                            <input type="file" class="form-control" id="foto" name="foto" accept="image/*">
-                        </div>
+                    <?php if (isset($pengaduan['admin_id'])) : ?>
+                        <p class="alert alert-danger">Anda sudah memberikan tanggapan</p>
+                    <?php else : ?>
+                        <form action="<?= route_to('dashboard.pengaduan.tanggapan.beriTanggapan', $pengaduan['id']) ?>" method="post" enctype="multipart/form-data">
+                            <?= csrf_field() ?>
+                            <div class="mb-3">
+                                <label for="tanggapan" class="form-label"><strong>Tanggapan</strong></label>
+                                <textarea class="form-control" id="tanggapan" name="tanggapan" rows="3" required>
+                                
+                                </textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="foto" class="form-label"><strong>Foto (Optional)</strong></label>
+                                <input type="file" class="form-control" id="foto" name="foto_tanggapan" accept="image/*">
+                            </div>
 
-                        <div class="mb-3">
-                            <label for="tanggapan" class="form-label"> <strong> Ubah Status Pengaduan</strong> </label>
-                            <select class="form-control" id="status" name="status" required>
-                                <option value="">Pilih Status</option>
-                                <option value="Menunggu Verifikasi">Menunggu Verifikasi</option>
-                                <option value="Diproses">Diproses</option>
-                                <option value="Selesai">Selesai</option>
-                            </select>
+                            <div class="mb-3">
+                                <label for="tanggapan" class="form-label"> <strong> Ubah Status Pengaduan</strong> </label>
+                                <select class="form-control" id="status" name="status" required>
+                                    <option value="">Pilih Status</option>
+                                    <option value="Menunggu Verifikasi">Menunggu Verifikasi</option>
+                                    <option value="Diproses">Diproses</option>
+                                    <option value="Selesai">Selesai</option>
+                                </select>
 
 
-                        </div>
-                        <button type="submit" class="btn btn-primary">Perbarui</button>
-                    </form>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Perbarui</button>
+                        </form>
+                    <?php endif ?>
                 </div>
 
             </div>

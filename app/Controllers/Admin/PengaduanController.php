@@ -35,7 +35,8 @@ class PengaduanController extends BaseController
 
     public function show($id)
     {
-          $model = new PengaduanModel();
+        $model = new PengaduanModel();
+
 
         $pengaduan = $model->find($id);
 
@@ -65,7 +66,7 @@ class PengaduanController extends BaseController
 
 
 
-    public function updateProcess($id)
+    public function beriTanggapan($id)
     {
         $model = new PengaduanModel();
 
@@ -76,19 +77,32 @@ class PengaduanController extends BaseController
         }
 
         $rules = [
-            'status' => 'required'
+            'status' => 'required',
+            'tanggapan' => 'required',
         ];
 
         if (!$this->validate($rules)) {
             return redirect()->to('/admin/pengaduan/update/' . $id)->withInput();
         }
 
+
+
+        if ($this->request->getFile('foto_tanggapan')) {
+            $foto = $this->request->getFile('foto_tanggapan');
+            $namaFoto = $foto->getRandomName();
+            $foto->move('uploads/pengaduan/tanggapan', $namaFoto);
+        }
+
         $model->update($id, [
-            'status' => $this->request->getVar('status')
+            'admin_id' => $_SESSION['id'], 
+            'status' => $this->request->getVar('status'),
+            'tanggapan' => $this->request->getVar('tanggapan'),
+            'foto_tanggapan' => $namaFoto ?? '-'
+
         ]);
 
         session()->setFlashdata('success', 'Data berhasil diupdate');
 
-        return redirect()->to('/admin/pengaduan');
+        return redirect()->back();
     }
 }

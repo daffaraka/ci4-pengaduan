@@ -28,6 +28,7 @@
                             <th>Tanggal Kejadian</th>
                             <th>Lokasi</th>
                             <th>Status</th>
+                            <td>Action</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,6 +53,11 @@
                                         <?php else : ?>
                                             <span class="badge bg-success"><?= esc($item['status']) ?></span>
                                         <?php endif ?>
+                                    </td>
+                                    <td>
+                                        <a href="/beranda/pengaduan/detail/<?= esc($item['id']) ?>" class="btn btn-info btn-sm">Lihat Pengaduan</a>
+
+
                                     </td>
                                 </tr>
                             <?php endforeach ?>

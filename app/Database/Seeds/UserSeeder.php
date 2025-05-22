@@ -11,7 +11,6 @@ class UserSeeder extends Seeder
         $faker = \Faker\Factory::create('id_ID');
 
         $this->db->table('users')->insert([
-            'id' => 0,
             'nik' => '1234567890123456',
             'email' => 'admin@admin.com',
             'nama' => 'Admin',
@@ -23,7 +22,6 @@ class UserSeeder extends Seeder
         $data = [];
         for ($i = 1; $i < 10; $i++) {
             $data[] = [
-                'id' => $i,
                 'nik' => $faker->nik,
                 'email' => $faker->email,
                 'nama' => $faker->name,

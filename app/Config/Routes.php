@@ -26,7 +26,7 @@ $routes->group('admin', ['filter' => ['auth', 'is_admin']], static function ($ro
         $routes->get('show/(:num)', 'Admin\PengaduanController::show/$1', ['as' => 'dashboard.pengaduan.show']); // Show form to edit an existing pengaduan
         $routes->post('update/(:num)', 'Admin\PengaduanController::update/$1', ['as' => 'dashboard.pengaduan.update']); // Handle form submission for updating a pengaduan
         $routes->post('delete/(:num)', 'Admin\PengaduanController::delete/$1', ['as' => 'dashboard.pengaduan.delete']); // Delete a specific pengaduan
-
+        $routes->post('beri-tanggapan/(:num)', 'Admin\PengaduanController::beriTanggapan/$1', ['as' => 'dashboard.pengaduan.tanggapan.beriTanggapan']);
     });
 
 
@@ -48,7 +48,6 @@ $routes->group('admin', ['filter' => ['auth', 'is_admin']], static function ($ro
             $routes->get('edit/(:num)', 'TanggapanController::editTanggapan/$1/$2'); // Show form to edit an existing pengaduan
             $routes->post('update/(:num)', 'TanggapanController::updateTanggapan/$1/$2'); // Handle form submission for updating a pengaduan
             $routes->get('delete/(:num)', 'TanggapanController::deleteTanggapan/$1/$2'); // Delete a specific pengaduan
-
         });
     });
 });
@@ -71,4 +70,5 @@ $routes->group('beranda', static function ($routes) {
     $routes->get('pengaduan/riwayat', 'BerandaController::riwayat', ['filter' => 'auth']);
     $routes->get('pengaduan/status', 'BerandaController::status', ['filter' => 'auth']);
     $routes->get('pengaduan/tanggapan', 'BerandaController::tanggapan', ['filter' => 'auth']);
+    $routes->get('pengaduan/detail/(:num)', 'BerandaController::detail/$1', ['filter' => 'auth']);
 });

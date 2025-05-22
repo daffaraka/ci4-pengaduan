@@ -6,7 +6,7 @@ use CodeIgniter\Database\Migration;
 
 class CreatePengaduanTable extends Migration
 {
-      public function up()
+    public function up()
     {
         $this->forge->addField([
             'id' => [
@@ -46,6 +46,24 @@ class CreatePengaduanTable extends Migration
                 'type'       => 'ENUM',
                 'constraint' => ['Menunggu Verifikasi', 'Diproses', 'Selesai'],
                 'default'    => 'Menunggu Verifikasi',
+            ],
+
+            'admin_id' => [
+                'type'       => 'INT',
+                'unsigned'   => true,
+                'constraint' => 11,
+                'null'       => true,
+
+            ],
+            'tanggapan' => [
+                'type' => 'TEXT',
+                'null'       => true,
+
+            ],
+            'foto_tanggapan' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 255,
+                'null'       => true,
             ],
             'created_at' => [
                 'type'    => 'DATETIME',

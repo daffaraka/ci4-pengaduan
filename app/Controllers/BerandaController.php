@@ -69,7 +69,7 @@ class BerandaController extends BaseController
         $userId = session()->get('id');
 
         $data['pengaduan'] = model('PengaduanModel')->where('status !=', 'selesai')->where('user_id', $userId)->findAll();
-        $data['riwayat'] = model('PengaduanModel')->where('status =','selesai')->where('user_id', $userId)->findAll();
+        $data['riwayat'] = model('PengaduanModel')->where('status =', 'selesai')->where('user_id', $userId)->findAll();
 
         return view('home/profile/daftar_pengaduan', $data);
     }
@@ -100,5 +100,20 @@ class BerandaController extends BaseController
             ->findAll();
 
         return view('pengaduan/tanggapan', $data);
+    }
+
+    public function detail($id)
+    {
+        // Menampilkan detail dari pengaduan yang dipilih
+        $userId = $_SESSION['id'];
+        $pengaduanModel = model('PengaduanModel');
+
+        $data['pengaduan'] = $pengaduanModel->where('id', $id)->where('user_id', $userId)->first();
+
+        if (!$data['pengaduan']) {
+            return redirect()->to('beranda/pengaduan/daftar-pengaduan')->with('error', 'Pengaduan tidak ditemukan.');
+        }
+
+        return view('home\profile\detail_pengaduan.php', $data);
     }
 }

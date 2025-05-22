@@ -22,6 +22,9 @@ class PengaduanModel extends Model
         'lokasi_kejadian',
         'foto',
         'status',
+        'admin_id',
+        'tanggapan',
+        'foto_tanggapan',
         'created_at',
         'updated_at',
     ];
@@ -55,4 +58,21 @@ class PengaduanModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+
+    public function withUser($id)
+    {
+        return $this->select('pengaduan.*, users.name as user_name')
+            ->join('users', 'users.id = pengaduan.user_id')
+            ->where('pengaduan.id', $id)
+            ->first();
+    }
+
+    public function tanggapan($id)
+    {
+        return $this->select('pengaduan.*, tanggapan.*')
+            ->join('tanggapan', 'tanggapan.pengaduan_id = pengaduan.id')
+            ->where('pengaduan.id', $id)
+            ->first();
+    }
 }
