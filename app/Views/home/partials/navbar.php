@@ -12,6 +12,13 @@
             <li><a href="/beranda/pengaduan/tanggapan">Tanggapan</a></li> -->
           </ul>
         </li>
+        <?php if (session()->get('role') == 'admin') : ?>
+          <li class="dropdown"><a href="#"><span>Admin</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="/admin/dashboard">Dashboard</a></li>
+            </ul>
+          </li>
+        <?php endif; ?>
         <li class="dropdown"><a href="#"><span>Akun</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
             <!-- <li><a href="/profile">Profil Saya</a></li> -->

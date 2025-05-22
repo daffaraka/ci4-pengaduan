@@ -32,6 +32,19 @@ class PengaduanController extends BaseController
         return redirect()->to('/admin/pengaduan');
     }
 
+
+    public function show($id)
+    {
+          $model = new PengaduanModel();
+
+        $pengaduan = $model->find($id);
+
+
+        return view('dashboard/pengaduan/pengaduan-show', [
+            'pengaduan' => $pengaduan
+        ]);
+    }
+
     public function update($id)
     {
         $model = new PengaduanModel();

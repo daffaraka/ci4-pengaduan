@@ -2,9 +2,11 @@
 
 <?= $this->section('content'); ?>
 <div class="container">
-    <h3>List Pengaduan </h3>
+    <div class="card">
+        <div class="card-body">
+          <h3>List Pengaduan </h3>
 
-    <div class="d-flex my-5">
+    <!-- <div class="d-flex my-5">
         <div class="mb-2">
             <label for=""> <strong>Filter Status</strong> </label>
             <select name="status" id="filterStatus" class="form-control mt-2 border shadow-sm text-dark">
@@ -14,7 +16,7 @@
                 <option value="Selesai">Selesai</option>
             </select>
         </div>
-    </div>
+    </div> -->
     <div class="table-responsive">
         <table class="table table-bordered table-striped" id="dataTables">
             <thead>
@@ -59,9 +61,9 @@
                                 <?php endif ?>
                             </td>
                             <td>
-                                <a href="/pengaduan/detail/<?= $item['id'] ?>" class="btn btn-info btn-sm">Detail</a>
+                                <a href="<?= route_to('dashboard.pengaduan.show',$item['id']) ?>" class="btn btn-info btn-sm">Detail</a>
                                 <a href="/pengaduan/edit/<?= $item['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
-                                <form action="/pengaduan/delete/<?= $item['id'] ?>" method="post" style="display:inline;">
+                                <form action="<?= route_to('dashboard.pengaduan.delete', $item['id']) ?>" method="post" style="display:inline;">
                                     <?= csrf_field() ?>
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
                                 </form>
@@ -77,6 +79,9 @@
             </tbody>
         </table>
     </div>
+        </div>
+    </div>
+   
 
 </div>
 <?= $this->endSection(); ?>

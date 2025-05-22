@@ -13,6 +13,7 @@ class SessionController extends BaseController
             'id' => $data['id'],
             'nama' => $data['nama'],
             'email' => $data['email'],
+            'role' => $data['role'],
             'isLoggedIn' => true
         ];
 

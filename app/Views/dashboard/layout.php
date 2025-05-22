@@ -17,11 +17,11 @@
   <link rel="stylesheet" href="<?= base_url('assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css') ?>">
   <!-- endinject -->
   <!-- Plugin css for this page -->
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 
-     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
@@ -191,7 +191,7 @@
                 <p class="mb-1 mt-3 fw-semibold"><?= session()->get('nama') ?> </p>
                 <p class="fw-light text-muted mb-0">allenmoreno@gmail.com</p>
               </div>
-         
+
               <form action="<?= base_url('logout') ?>" method="post" class="d-inline">
                 <button type="submit" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</button>
               </form>
@@ -210,13 +210,9 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
+          <?= $this->renderSection('content') ?>
 
-          <div class="card">
-            <div class="card-body">
-              <?= $this->renderSection('content') ?>
 
-            </div>
-          </div>
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
@@ -235,7 +231,9 @@
   <!-- container-scroller -->
   <!-- plugins:js -->
 
-  <?= $this->renderSection('scripts') ;?>
+  <?= $this->renderSection('scripts'); ?>
+
+ 
   <script src="<?= base_url('assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') ?>"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
@@ -252,7 +250,7 @@
   <!-- Custom js for this page-->
   <script src="<?= base_url('assets/js/jquery.cookie.js') ?>" type="text/javascript"></script>
   <script src="<?= base_url('assets/js/dashboard.js') ?>"></script>
-  
+
   <!-- <script src="assets/js/Chart.roundedBarCharts.js"></script> -->
   <!-- End custom js for this page-->
 

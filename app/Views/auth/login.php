@@ -9,6 +9,12 @@
 
                 <div class="card-body">
                     <h3 class="card-title fw-bold text-center mb-4">Login Form</h3>
+
+                    <?php if (session()->getFlashdata('msg')): ?>
+                        <div class="alert alert-danger mt-3">
+                            <?= session()->getFlashdata('msg') ?>
+                        </div>
+                    <?php endif; ?>
                     <form action="<?= url_to('login') ?>" method="post">
                         <div class="form-group my-3">
                             <label for="email">Email</label>
@@ -29,11 +35,7 @@
                         </div>
                     </form>
 
-                    <?php if (session()->getFlashdata('msg')): ?>
-                        <div class="alert alert-danger mt-3">
-                            <?= session()->getFlashdata('msg') ?>
-                        </div>
-                    <?php endif; ?>
+
                 </div>
             </div>
         </div>

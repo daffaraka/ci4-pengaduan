@@ -9,13 +9,13 @@
       <li class="nav-item nav-category">Manajemen</li>
 
       <li class="nav-item">
-        <a class="nav-link" href="pages/user/user.php">
+        <a class="nav-link" href="<?= route_to('dashboard.user.index') ?>">
           <i class="menu-icon mdi mdi-account"></i>
           <span class="menu-title">User</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/dashboard/pengaduan">
+        <a class="nav-link" href="<?= route_to('dashboard.pengaduan.index') ?>">
           <i class="menu-icon mdi mdi-file-document"></i>
           <span class="menu-title">Pengaduan</span>
         </a>

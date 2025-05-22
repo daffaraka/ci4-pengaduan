@@ -20,7 +20,7 @@ class UserModel extends Model
         'password',
         'role',
         'alamat',
-        'telfon',
+        'telepon',
         'created_at',
         'updated_at',
     ];

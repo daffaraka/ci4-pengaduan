@@ -27,11 +27,11 @@ class CreateTanggapanTable extends Migration
                 'constraint' => 255,
                 'null'       => true,
             ],
-            'status' => [
-                'type'       => 'ENUM',
-                'constraint' => ['Menunggu Verifikasi', 'Diproses', 'Selesai'],
-                'default'    => 'Menunggu Verifikasi',
-            ],
+            // 'status' => [
+            //     'type'       => 'ENUM',
+            //     'constraint' => ['Menunggu Verifikasi', 'Diproses', 'Selesai'],
+            //     'default'    => 'Menunggu Verifikasi',
+            // ],
             'created_at' => [
                 'type'    => 'DATETIME',
                 'null'    => true,

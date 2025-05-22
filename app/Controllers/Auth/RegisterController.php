@@ -33,7 +33,7 @@ class RegisterController extends BaseController
         if ($this->validate($rules)) {
             $user = new UserModel();
             $data = [
-                'name'     => $this->request->getVar('name'),
+                'nama'     => $this->request->getVar('nama'),
                 'email'    => $this->request->getVar('email'),
                 'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
                 'nik'      => $this->request->getVar('nik'),
@@ -43,7 +43,7 @@ class RegisterController extends BaseController
             ];
 
             $user->insert([
-                'name'     => $this->request->getVar('name'),
+                'nama'     => $this->request->getVar('nama'),
                 'email'    => $this->request->getVar('email'),
                 'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
                 'nik'      => $this->request->getVar('nik'),
